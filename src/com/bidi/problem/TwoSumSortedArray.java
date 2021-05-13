@@ -16,7 +16,7 @@ package com.bidi.problem;
  *         you may not use the same element twice.
  * 
  */
-public class TwoSum2 {
+public class TwoSumSortedArray {
 
 	public static void main(String[] args) {
 		int[] t1 = new int[] { 2, 7, 11, 15 };
