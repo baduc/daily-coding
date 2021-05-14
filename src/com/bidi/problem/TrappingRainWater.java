@@ -12,7 +12,37 @@ public class TrappingRainWater {
 		System.out.println(trap(t2));
 	}
 
+	//O(n)
 	public static int trap(int[] height) {
+		int total = 0;
+		int left = 0;
+		int right = height.length - 1;
+
+		int maxLeft = height[left];
+		int maxRight = height[right];
+		while (left < right) {
+			if (height[left] <= height[right]) {
+				if (maxLeft < height[left]) {
+					maxLeft = height[left];
+				} else {
+					total += maxLeft - height[left];
+				}
+				left++;
+			} else {
+				if (maxRight < height[right]) {
+					maxRight = height[right];
+				} else {
+					total += maxRight - height[right];
+				}
+				right--;
+			}
+		}
+
+		return total;
+	}
+
+	//O(n^2)
+	public static int trap2(int[] height) {
 
 		int total = 0;
 		for (int i = 0; i < height.length; i++) {
@@ -28,7 +58,10 @@ public class TrappingRainWater {
 				maxRight = Math.max(maxRight, height[rightIdx]);
 				rightIdx++;
 			}
-			total = total + Math.min(maxLeft, maxRight) - height[i];
+			int curWater = Math.min(maxLeft, maxRight) - height[i];
+			if (curWater > 0) {
+				total = total + curWater;
+			}
 		}
 		return total;
 	}
