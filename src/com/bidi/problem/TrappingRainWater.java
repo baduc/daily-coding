@@ -2,6 +2,8 @@ package com.bidi.problem;
 
 /**
  * @author bidi
+ * 
+ * https://leetcode.com/problems/trapping-rain-water/
  *
  */
 public class TrappingRainWater {
@@ -9,30 +11,31 @@ public class TrappingRainWater {
 		int[] t1 = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
 		int[] t2 = new int[] { 4, 2, 0, 3, 2, 5 };
 
-		System.out.println(trap(t2));
+		System.out.println(trap(t1));
 	}
 
-	//O(n)
+	// O(n)
 	public static int trap(int[] height) {
 		int total = 0;
+		int maxLeft = 0;
+		int maxRight = 0;
+
 		int left = 0;
 		int right = height.length - 1;
 
-		int maxLeft = height[left];
-		int maxRight = height[right];
-		while (left < right) {
-			if (height[left] <= height[right]) {
+		while (left <= right) {
+			if (height[left] < height[right]) {
 				if (maxLeft < height[left]) {
 					maxLeft = height[left];
 				} else {
-					total += maxLeft - height[left];
+					total += (maxLeft - height[left]);
 				}
 				left++;
 			} else {
 				if (maxRight < height[right]) {
 					maxRight = height[right];
 				} else {
-					total += maxRight - height[right];
+					total += (maxRight - height[right]);
 				}
 				right--;
 			}
@@ -41,7 +44,7 @@ public class TrappingRainWater {
 		return total;
 	}
 
-	//O(n^2)
+	// O(n^2)
 	public static int trap2(int[] height) {
 
 		int total = 0;
