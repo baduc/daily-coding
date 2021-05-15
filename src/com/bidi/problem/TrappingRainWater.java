@@ -12,6 +12,7 @@ public class TrappingRainWater {
 		int[] t2 = new int[] { 4, 2, 0, 3, 2, 5 };
 
 		System.out.println(trap(t1));
+		System.out.println(trap(t2));
 	}
 
 	// O(n)
