@@ -42,11 +42,8 @@ public class BackspaceStringCompare {
 				}
 			}
 		}
-		StringBuilder sb = new StringBuilder();
-		while (!stack1.isEmpty()) {
-			sb.append(stack1.pop());
-		}
-
+		String sConvert = String.valueOf(stack1);
+		
 		Stack<Character> stack2 = new Stack<Character>();
 		for (char c : tChars) {
 			if (c != '#') {
@@ -57,12 +54,9 @@ public class BackspaceStringCompare {
 				}
 			}
 		}
-		StringBuilder sb2 = new StringBuilder();
-		while (!stack2.isEmpty()) {
-			sb2.append(stack2.pop());
-		}
+		String tConvert = String.valueOf(stack2);
 
-		return sb.compareTo(sb2) == 0;
+		return sConvert.equals(tConvert);
 	}
 
 }
